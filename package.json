@@ -1,0 +1,17 @@
+{
+  "name": "ung_dung_ban_dien_thoai_mongodb",
+  "version": "1.0.0",
+  "description": "Ung_dung_ban_dien_thoai",
+  "main": "index.js",
+  "scripts": {
+    "start": "node Dich_vu/DV_DU_LIEU.js"
+  },
+  "keywords": [
+    "123456"
+  ],
+  "author": "Toan",
+  "license": "ISC",
+  "dependencies": {
+    "mongodb": "^3.1.1"
+  }
+}
