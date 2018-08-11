@@ -12,6 +12,7 @@
   "author": "Toan",
   "license": "ISC",
   "dependencies": {
-    "mongodb": "^3.1.1"
+    "mongodb": "^3.1.1",
+    "nodemailer": "^4.6.7"
   }
 }

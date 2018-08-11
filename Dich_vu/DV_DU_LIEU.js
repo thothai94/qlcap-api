@@ -1,5 +1,6 @@
 var http = require("http");
 var Luu_tru = require("../Xu_ly/XL_LUU_TRU_MONGODB")
+var Gmail = require("../Xu_ly/XL_GUI_THU_DIEN_TU")
 
 var Xu_ly_Tham_so = require('querystring')
 var Port = normalizePort(process.env.PORT || 1000)
@@ -283,6 +284,62 @@ var Dich_vu = http.createServer(
 
                 })
 
+            } else if (Ma_so_Xu_ly == "Nhan_Lien_he") {
+                
+                var from = "huutoan.home@gmail.com"
+                var to = "huutoan1994@gmail.com"
+                var subject = "Nhận liên hệ khách hàng"
+                var body = Chuoi_Nhan
+
+                var Kq = Gmail.Gui_Thu_Lien_he(from, to, subject, body)
+                console.log(Kq)
+                Kq.then(result=>{
+                    console.log(result)
+                    Chuoi_Kq = "OK"
+                    Dap_ung.setHeader("Access-Control-Allow-Origin", '*')
+                    Dap_ung.setHeader('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+                    Dap_ung.setHeader('Access-Control-Allow-Headers', 'X-Requested-With, content-type');
+                    Dap_ung.setHeader('Access-Control-Allow-Credentials', true);
+                    Dap_ung.end(Chuoi_Kq);
+                }).catch(err=>{
+                    console.log(err)
+                    Chuoi_Kq = "error"
+                    Dap_ung.setHeader("Access-Control-Allow-Origin", '*')
+                    Dap_ung.setHeader('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+                    Dap_ung.setHeader('Access-Control-Allow-Headers', 'X-Requested-With, content-type');
+                    Dap_ung.setHeader('Access-Control-Allow-Credentials', true);
+                    Dap_ung.end(Chuoi_Kq);
+                })
+               
+
+            } else if (Ma_so_Xu_ly == "Xac_nhan_Lien_he") {
+                
+                var from = "huutoan.home@gmail.com"
+                var to = Chuoi_Nhan
+                var subject = "Cửa hàng điện thoại PET"
+                var body = `<p><strong>K&iacute;nh ch&agrave;o qu&yacute; kh&aacute;ch!</strong></p><p><span style="color:#3498db"><strong>Ch&uacute;ng t&ocirc;i đ&atilde; nhận được li&ecirc;n hệ, ch&uacute;ng t&ocirc;i sẽ phản hồi trong thời gian sớm nhất</strong></span></p><p><u><em>Tr&acirc;n trọng,</em></u></p>`
+
+                var Kq = Gmail.Gui_Thu_Lien_he(from, to, subject, body)
+                console.log(Kq)
+                Kq.then(result=>{
+                    console.log(result)
+                    Chuoi_Kq = "OK"
+                    Dap_ung.setHeader("Access-Control-Allow-Origin", '*')
+                    Dap_ung.setHeader('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+                    Dap_ung.setHeader('Access-Control-Allow-Headers', 'X-Requested-With, content-type');
+                    Dap_ung.setHeader('Access-Control-Allow-Credentials', true);
+                    Dap_ung.end(Chuoi_Kq);
+                }).catch(err=>{
+                    console.log(err)
+                    Chuoi_Kq = "error"
+                    Dap_ung.setHeader("Access-Control-Allow-Origin", '*')
+                    Dap_ung.setHeader('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+                    Dap_ung.setHeader('Access-Control-Allow-Headers', 'X-Requested-With, content-type');
+                    Dap_ung.setHeader('Access-Control-Allow-Credentials', true);
+                    Dap_ung.end(Chuoi_Kq);
+                })
+               
+
             } else {
                 Chuoi_Kq = Luu_tru.Doc_Thong_tin_Dich_vu()
                 Dap_ung.setHeader("Access-Control-Allow-Origin", '*')
@@ -294,9 +351,9 @@ var Dich_vu = http.createServer(
         })
 
     })
-Dich_vu.listen(Port,
-    console.log("Dịch vụ Dữ liệu đang thực thi ...: " + Port)
-);
+// Dich_vu.listen(Port,
+//     console.log("Dịch vụ Dữ liệu đang thực thi ...: " + Port)
+// );
 
 //Them function
 Dich_vu.listen(Port);
