@@ -6,7 +6,7 @@ class XL_GUI_THU_DIEN_TU {
             host: "smtp.gmail.com",
             auth: {
                 type: "login", // default
-                user: "huutoan.home@gmail.com",
+                user: "smartshop.mobilestore@gmail.com",
                 pass: "vtc19001530"
             }
             /* service: 'gmail',
@@ -17,7 +17,7 @@ class XL_GUI_THU_DIEN_TU {
         })
 
         var mailOptions = {
-            from: `CỬa hàng Điện thoại <${from}>`,
+            from: `Cửa hàng Điện thoại Smartshop <${from}>`,
             to: to,
             subject: subject,
             html: body

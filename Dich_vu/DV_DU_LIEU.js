@@ -105,9 +105,6 @@ var Dich_vu = http.createServer(
                     console.log(result)
                     Chuoi_Kq = "OK"
                     Dap_ung.setHeader("Access-Control-Allow-Origin", '*')
-                    Dap_ung.setHeader('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
-                    Dap_ung.setHeader('Access-Control-Allow-Headers', 'X-Requested-With, content-type');
-                    Dap_ung.setHeader('Access-Control-Allow-Credentials', true);
                     Dap_ung.end(Chuoi_Kq);
                 })
 
@@ -286,7 +283,7 @@ var Dich_vu = http.createServer(
 
             } else if (Ma_so_Xu_ly == "Nhan_Lien_he") {
                 
-                var from = "huutoan.home@gmail.com"
+                var from = "smartshop.mobilestore@gmail.com"
                 var to = "huutoan1994@gmail.com"
                 var subject = "Nhận liên hệ khách hàng"
                 var body = Chuoi_Nhan
@@ -314,9 +311,9 @@ var Dich_vu = http.createServer(
 
             } else if (Ma_so_Xu_ly == "Xac_nhan_Lien_he") {
                 
-                var from = "huutoan.home@gmail.com"
+                var from = "smartshop.mobilestore@gmail.com"
                 var to = Chuoi_Nhan
-                var subject = "Cửa hàng điện thoại PET"
+                var subject = "Cửa hàng Điện thoại Smartshop"
                 var body = `<p><strong>K&iacute;nh ch&agrave;o qu&yacute; kh&aacute;ch!</strong></p><p><span style="color:#3498db"><strong>Ch&uacute;ng t&ocirc;i đ&atilde; nhận được li&ecirc;n hệ, ch&uacute;ng t&ocirc;i sẽ phản hồi trong thời gian sớm nhất</strong></span></p><p><u><em>Tr&acirc;n trọng,</em></u></p>`
 
                 var Kq = Gmail.Gui_Thu_Lien_he(from, to, subject, body)
