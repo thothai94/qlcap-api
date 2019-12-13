@@ -1,6 +1,7 @@
 var http = require("http");
 var Luu_tru = require("../Xu_ly/XL_LUU_TRU_MONGODB")
 var Gmail = require("../Xu_ly/XL_GUI_THU_DIEN_TU")
+var getToken = require("../Xu_ly/XL_Get_token")
 
 var Xu_ly_Tham_so = require('querystring')
 var Port = normalizePort(process.env.PORT || 1000)
@@ -10,6 +11,7 @@ var Danh_sach_Dien_thoai = Luu_tru.Doc_Danh_sach()
 var Cua_hang = Luu_tru.Doc_Thong_tin_Cua_hang()
 var Nguoi_dung = Luu_tru.Doc_Thong_tin_Nguoi_dung()
 var Danh_sach_Thanh_ly = Luu_tru.Doc_Danh_sach_Thanh_ly()
+var token = getToken.getToken()
 
 Danh_sach_Dien_thoai.then(Kq => {
     Du_lieu.Danh_sach_Dien_thoai = Kq
@@ -36,7 +38,17 @@ var Dich_vu = http.createServer(
         var Ma_so_Xu_ly = Tham_so.Ma_so_Xu_ly
         Yeu_cau.on('data', (chunk) => { Chuoi_Nhan += chunk })
         Yeu_cau.on('end', () => {
-            if (Ma_so_Xu_ly == "Doc_Danh_sach_Dien_thoai") {
+            if (Ma_so_Xu_ly == "getToken") {
+                var Doi_tuong_Kq = {}
+                Doi_tuong_Kq.token = token
+                Chuoi_Kq = JSON.stringify(Doi_tuong_Kq)
+                Dap_ung.setHeader("Access-Control-Allow-Origin", '*')
+                Dap_ung.setHeader('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+                Dap_ung.setHeader('Access-Control-Allow-Headers', 'X-Requested-With, content-type');
+                Dap_ung.setHeader('Access-Control-Allow-Credentials', true);
+                Dap_ung.end(Chuoi_Kq);
+            }
+            else if (Ma_so_Xu_ly == "Doc_Danh_sach_Dien_thoai") {
                 var Doi_tuong_Kq = {}
                 Doi_tuong_Kq.Danh_sach_Dien_thoai = Du_lieu.Danh_sach_Dien_thoai
                 Doi_tuong_Kq.Cua_hang = Du_lieu.Cua_hang
