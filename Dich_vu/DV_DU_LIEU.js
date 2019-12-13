@@ -1,7 +1,7 @@
 var http = require("http");
 var Luu_tru = require("../Xu_ly/XL_LUU_TRU_MONGODB")
 var Gmail = require("../Xu_ly/XL_GUI_THU_DIEN_TU")
-var getToken = require("../Xu_ly/XL_Get_token")
+var Token = require("../Xu_ly/XL_Get_token")
 
 var Xu_ly_Tham_so = require('querystring')
 var Port = normalizePort(process.env.PORT || 1000)
@@ -40,7 +40,7 @@ var Dich_vu = http.createServer(
         Yeu_cau.on('end', () => {
             if (Ma_so_Xu_ly == "getToken") {
                 var Doi_tuong_Kq = {}
-                var token = getToken.getToken()
+                var token = Token.getToken()
                 token.then(Kq => {
                     Doi_tuong_Kq.token = Kq
                     Chuoi_Kq = JSON.stringify(Doi_tuong_Kq)

@@ -12,3 +12,6 @@ class XL_Get_token {
         return authToken;
     }
 }
+
+var Token = new XL_Get_token()
+module.exports = Token
