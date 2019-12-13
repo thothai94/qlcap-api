@@ -11,7 +11,7 @@ var Danh_sach_Dien_thoai = Luu_tru.Doc_Danh_sach()
 var Cua_hang = Luu_tru.Doc_Thong_tin_Cua_hang()
 var Nguoi_dung = Luu_tru.Doc_Thong_tin_Nguoi_dung()
 var Danh_sach_Thanh_ly = Luu_tru.Doc_Danh_sach_Thanh_ly()
-var token = getToken.getToken()
+
 
 Danh_sach_Dien_thoai.then(Kq => {
     Du_lieu.Danh_sach_Dien_thoai = Kq
@@ -40,13 +40,16 @@ var Dich_vu = http.createServer(
         Yeu_cau.on('end', () => {
             if (Ma_so_Xu_ly == "getToken") {
                 var Doi_tuong_Kq = {}
-                Doi_tuong_Kq.token = token
-                Chuoi_Kq = JSON.stringify(Doi_tuong_Kq)
-                Dap_ung.setHeader("Access-Control-Allow-Origin", '*')
-                Dap_ung.setHeader('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
-                Dap_ung.setHeader('Access-Control-Allow-Headers', 'X-Requested-With, content-type');
-                Dap_ung.setHeader('Access-Control-Allow-Credentials', true);
-                Dap_ung.end(Chuoi_Kq);
+                var token = getToken.getToken()
+                token.then(Kq => {
+                    Doi_tuong_Kq.token = Kq
+                    Chuoi_Kq = JSON.stringify(Doi_tuong_Kq)
+                    Dap_ung.setHeader("Access-Control-Allow-Origin", '*')
+                    Dap_ung.setHeader('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+                    Dap_ung.setHeader('Access-Control-Allow-Headers', 'X-Requested-With, content-type');
+                    Dap_ung.setHeader('Access-Control-Allow-Credentials', true);
+                    Dap_ung.end(Chuoi_Kq);
+                })
             }
             else if (Ma_so_Xu_ly == "Doc_Danh_sach_Dien_thoai") {
                 var Doi_tuong_Kq = {}
@@ -294,7 +297,7 @@ var Dich_vu = http.createServer(
                 })
 
             } else if (Ma_so_Xu_ly == "Nhan_Lien_he") {
-                
+
                 var from = "smartshop.mobilestore@gmail.com"
                 var to = "huutoan1994@gmail.com"
                 var subject = "Nhận liên hệ khách hàng"
@@ -302,7 +305,7 @@ var Dich_vu = http.createServer(
 
                 var Kq = Gmail.Gui_Thu_Lien_he(from, to, subject, body)
                 console.log(Kq)
-                Kq.then(result=>{
+                Kq.then(result => {
                     console.log(result)
                     Chuoi_Kq = "OK"
                     Dap_ung.setHeader("Access-Control-Allow-Origin", '*')
@@ -310,7 +313,7 @@ var Dich_vu = http.createServer(
                     Dap_ung.setHeader('Access-Control-Allow-Headers', 'X-Requested-With, content-type');
                     Dap_ung.setHeader('Access-Control-Allow-Credentials', true);
                     Dap_ung.end(Chuoi_Kq);
-                }).catch(err=>{
+                }).catch(err => {
                     console.log(err)
                     Chuoi_Kq = "error"
                     Dap_ung.setHeader("Access-Control-Allow-Origin", '*')
@@ -319,10 +322,10 @@ var Dich_vu = http.createServer(
                     Dap_ung.setHeader('Access-Control-Allow-Credentials', true);
                     Dap_ung.end(Chuoi_Kq);
                 })
-               
+
 
             } else if (Ma_so_Xu_ly == "Xac_nhan_Lien_he") {
-                
+
                 var from = "smartshop.mobilestore@gmail.com"
                 var to = Chuoi_Nhan
                 var subject = "Cửa hàng Điện thoại Smartshop"
@@ -330,7 +333,7 @@ var Dich_vu = http.createServer(
 
                 var Kq = Gmail.Gui_Thu_Lien_he(from, to, subject, body)
                 console.log(Kq)
-                Kq.then(result=>{
+                Kq.then(result => {
                     console.log(result)
                     Chuoi_Kq = "OK"
                     Dap_ung.setHeader("Access-Control-Allow-Origin", '*')
@@ -338,7 +341,7 @@ var Dich_vu = http.createServer(
                     Dap_ung.setHeader('Access-Control-Allow-Headers', 'X-Requested-With, content-type');
                     Dap_ung.setHeader('Access-Control-Allow-Credentials', true);
                     Dap_ung.end(Chuoi_Kq);
-                }).catch(err=>{
+                }).catch(err => {
                     console.log(err)
                     Chuoi_Kq = "error"
                     Dap_ung.setHeader("Access-Control-Allow-Origin", '*')
@@ -347,7 +350,7 @@ var Dich_vu = http.createServer(
                     Dap_ung.setHeader('Access-Control-Allow-Credentials', true);
                     Dap_ung.end(Chuoi_Kq);
                 })
-               
+
 
             } else {
                 Chuoi_Kq = Luu_tru.Doc_Thong_tin_Dich_vu()
