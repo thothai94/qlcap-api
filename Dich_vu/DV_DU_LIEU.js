@@ -41,15 +41,13 @@ var Dich_vu = http.createServer(
             if (Ma_so_Xu_ly == "getToken") {
                 var Doi_tuong_Kq = {}
                 var token = Token.getToken()
-                token.then(Kq => {
-                    Doi_tuong_Kq.token = Kq
-                    Chuoi_Kq = JSON.stringify(Doi_tuong_Kq)
-                    Dap_ung.setHeader("Access-Control-Allow-Origin", '*')
-                    Dap_ung.setHeader('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
-                    Dap_ung.setHeader('Access-Control-Allow-Headers', 'X-Requested-With, content-type');
-                    Dap_ung.setHeader('Access-Control-Allow-Credentials', true);
-                    Dap_ung.end(Chuoi_Kq);
-                })
+                Doi_tuong_Kq.token = token
+                Chuoi_Kq = JSON.stringify(Doi_tuong_Kq)
+                Dap_ung.setHeader("Access-Control-Allow-Origin", '*')
+                Dap_ung.setHeader('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+                Dap_ung.setHeader('Access-Control-Allow-Headers', 'X-Requested-With, content-type');
+                Dap_ung.setHeader('Access-Control-Allow-Credentials', true);
+                Dap_ung.end(Chuoi_Kq);
             }
             else if (Ma_so_Xu_ly == "Doc_Danh_sach_Dien_thoai") {
                 var Doi_tuong_Kq = {}
