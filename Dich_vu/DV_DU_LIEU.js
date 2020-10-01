@@ -299,7 +299,7 @@ var Dich_vu = http.createServer(
                     Soi_cap.trang_thai = Soi_cap_Cap_nhat.trang_thai
                     Soi_cap.thiet_bi = Soi_cap_Cap_nhat.thiet_bi
                     Soi_cap.tbsd_id = Soi_cap_Cap_nhat.tbsd_id
-                    var Dieu_kien = { "soi_id": Tuyen_cap.soi_id }
+                    var Dieu_kien = { "soi_id": Soi_cap.soi_id }
                     var Gia_tri_Cap_nhat = {
                         $set: {
                             "ten_soi": Soi_cap.ten_soi,
