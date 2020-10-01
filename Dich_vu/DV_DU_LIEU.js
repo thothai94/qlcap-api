@@ -379,50 +379,6 @@ var Dich_vu = http.createServer(
 
                 })
             }
-            // else if (Ma_so_Xu_ly == "Cap_nhat_Tuyen_cap_test") {
-            //     var Kq = ""
-            //     var Tuyen_cap_Cap_nhat = JSON.parse(Chuoi_Nhan)
-                
-            //         var Tuyen_cap = Du_lieu.Danh_sach_Tuyen_cap.find(x => x.tuyen_id == Tuyen_cap_Cap_nhat.tuyen_id)
-            //         Tuyen_cap.ten_tuyen = Tuyen_cap_Cap_nhat.ten_tuyen
-            //         Tuyen_cap.Don_gia_Ban = Tuyen_cap_Cap_nhat.trang_thai
-            //         Tuyen_cap.Don_gia_Nhap = Tuyen_cap_Cap_nhat.chieu_dai_tuyen
-            //         Tuyen_cap.Nhom_Dien_thoai.Ten = Tuyen_cap_Cap_nhat.ly_trinh_dau
-            //         Tuyen_cap.Nhom_Dien_thoai.Ma_so = Tuyen_cap_Cap_nhat.ly_trinh_cuoi
-            //         Tuyen_cap.Nhom_Dien_thoai.Ma_so = Tuyen_cap_Cap_nhat.ghi_chu
-            //         Tuyen_cap.Nhom_Dien_thoai.Ma_so = Tuyen_cap_Cap_nhat.nam_khai_thac
-            //         Tuyen_cap.Nhom_Dien_thoai.Ma_so = Tuyen_cap_Cap_nhat.quoc_lo
-            //         Tuyen_cap.Nhom_Dien_thoai.Ma_so = Tuyen_cap_Cap_nhat.ptld_id
-            //         Tuyen_cap.Nhom_Dien_thoai.Ma_so = Tuyen_cap_Cap_nhat.suy_hao_thiet_ke
-            //         var Dieu_kien = { "tuyen_id": Tuyen_cap.tuyen_id }
-            //         var Gia_tri_Cap_nhat = {
-            //             $set: {
-            //                 "ten_tuyen": Tuyen_cap.ten_tuyen,
-            //                 "trang_thai": Tuyen_cap.trang_thai,
-            //                 "chieu_dai_tuyen": Tuyen_cap.chieu_dai_tuyen,
-            //                 "ly_trinh_dau": Tuyen_cap.ly_trinh_dau,
-            //                 "ly_trinh_cuoi": Tuyen_cap.ly_trinh_cuoi,
-            //                 "ghi_chu": Tuyen_cap.ghi_chu,
-            //                 "nam_khai_thac": Tuyen_cap.nam_khai_thac,
-            //                 "quoc_lo": Tuyen_cap.quoc_lo,
-            //                 "ptld_id": Tuyen_cap.ptld_id,
-            //                 "suy_hao_thiet_ke": Tuyen_cap.suy_hao_thiet_ke
-            //             }
-            //         }
-
-            //         Kq = Luu_tru.Cap_nhat_Doi_tuong("ql_tuyen", Dieu_kien, Gia_tri_Cap_nhat)
-
-            //         Kq.then(result => {
-            //             console.log(result)
-            //             Chuoi_Kq = "OK"
-            //             Dap_ung.setHeader("Access-Control-Allow-Origin", '*')
-            //             Dap_ung.setHeader('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
-            //             Dap_ung.setHeader('Access-Control-Allow-Headers', 'X-Requested-With, content-type');
-            //             Dap_ung.setHeader('Access-Control-Allow-Credentials', true);
-            //             Dap_ung.end(Chuoi_Kq);
-            //         })
-
-            // }
             else if (Ma_so_Xu_ly == "Cap_nhat_Tuyen_cap") {
                 var Kq = ""
                 var Danh_sach_Cap_nhat = JSON.parse(Chuoi_Nhan)
@@ -503,10 +459,33 @@ var Dich_vu = http.createServer(
 
             //     })
             // } 
+            // else if (Ma_so_Xu_ly == "Xoa_Tuyen_cap") {
+            //     var Kq = ""
+            //     var Danh_sach_Xoa = JSON.parse(Chuoi_Nhan)
+            //     Danh_sach_Xoa.forEach(Tuyen_cap_Xoa => {
+            //         var Tuyen_cap = Du_lieu.Danh_sach_Tuyen_cap.find(x => x.tuyen_id == Tuyen_cap_Xoa.tuyen_id)
+
+            //         var Dieu_kien = { "tuyen_id": Tuyen_cap.tuyen_id }
+            //         Kq = Luu_tru.Xoa_Doi_tuong("ql_tuyen", Dieu_kien)
+
+            //         Kq.then(result => {
+            //             Du_lieu.Danh_sach_Tuyen_cap = Du_lieu.Danh_sach_Tuyen_cap.filter(x => x.tuyen_id != Tuyen_cap_Xoa.tuyen_id)
+            //             Chuoi_Kq = "OK"
+            //             Dap_ung.setHeader("Access-Control-Allow-Origin", '*')
+            //             Dap_ung.setHeader('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+            //             Dap_ung.setHeader('Access-Control-Allow-Headers', 'X-Requested-With, content-type');
+            //             Dap_ung.setHeader('Access-Control-Allow-Credentials', true);
+            //             Dap_ung.end(Chuoi_Kq);
+            //         }).catch(err => {
+            //             Chuoi_Kq = "Error"
+            //         })
+
+            //     })
+
+            // } 
             else if (Ma_so_Xu_ly == "Xoa_Tuyen_cap") {
                 var Kq = ""
-                var Danh_sach_Xoa = JSON.parse(Chuoi_Nhan)
-                Danh_sach_Xoa.forEach(Tuyen_cap_Xoa => {
+                var Tuyen_cap_Xoa = JSON.parse(Chuoi_Nhan)
                     var Tuyen_cap = Du_lieu.Danh_sach_Tuyen_cap.find(x => x.tuyen_id == Tuyen_cap_Xoa.tuyen_id)
 
                     var Dieu_kien = { "tuyen_id": Tuyen_cap.tuyen_id }
@@ -523,14 +502,10 @@ var Dich_vu = http.createServer(
                     }).catch(err => {
                         Chuoi_Kq = "Error"
                     })
-
-                })
-
             } 
             else if (Ma_so_Xu_ly == "Xoa_Soi_cap") {
                 var Kq = ""
-                var Danh_sach_Xoa = JSON.parse(Chuoi_Nhan)
-                Danh_sach_Xoa.forEach(Soi_cap_Xoa => {
+                var Soi_cap_Xoa = JSON.parse(Chuoi_Nhan)
                     var Soi_cap = Du_lieu.Danh_sach_Soi_cap.find(x => x.soi_id == Soi_cap_Xoa.soi_id)
 
                     var Dieu_kien = { "soi_id": Soi_cap.soi_id }
@@ -548,13 +523,11 @@ var Dich_vu = http.createServer(
                         Chuoi_Kq = "Error"
                     })
 
-                })
 
             } 
             else if (Ma_so_Xu_ly == "Xoa_Doan_cap") {
                 var Kq = ""
-                var Danh_sach_Xoa = JSON.parse(Chuoi_Nhan)
-                Danh_sach_Xoa.forEach(Doan_cap_Xoa => {
+                var Doan_cap_Xoa = JSON.parse(Chuoi_Nhan)
                     var Doan_cap = Du_lieu.Danh_sach_Doan_cap.find(x => x.doan_id == Doan_cap_Xoa.doan_id)
 
                     var Dieu_kien = { "doan_id": Doan_cap.doan_id }
@@ -572,7 +545,6 @@ var Dich_vu = http.createServer(
                         Chuoi_Kq = "Error"
                     })
 
-                })
 
             } 
             // else if (Ma_so_Xu_ly == "Xoa_Dien_thoai") {
