@@ -330,7 +330,7 @@ var Dich_vu = http.createServer(
                 var Kq = ""
                 var Danh_sach_Cap_nhat = JSON.parse(Chuoi_Nhan)
                 Danh_sach_Cap_nhat.forEach(Doan_cap_Cap_nhat => {
-                    var Doan_cap = Du_lieu.Danh_sach_Doan_cap.find(x => x.tuyen_id == Doan_cap_Cap_nhat.tuyen_id)
+                    var Doan_cap = Du_lieu.Danh_sach_Doan_cap.find(x => x.doan_id == Doan_cap_Cap_nhat.doan_id)
                     Doan_cap.ten_doan = Doan_cap_Cap_nhat.ten_doan
                     Doan_cap.mo_ta = Doan_cap_Cap_nhat.mo_ta
                     Doan_cap.ly_trinh_dau = Doan_cap_Cap_nhat.ly_trinh_dau
