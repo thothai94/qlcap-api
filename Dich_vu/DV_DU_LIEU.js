@@ -505,7 +505,8 @@ var Dich_vu = http.createServer(
             // } 
             else if (Ma_so_Xu_ly == "Xoa_Soi_cap") {
                 var Kq = ""
-                var Soi_cap_Xoa = JSON.parse(Chuoi_Nhan)
+                var Danh_sach_Xoa = JSON.parse(Chuoi_Nhan)
+                Danh_sach_Xoa.forEach(Soi_cap_Xoa => {
                     var Soi_cap = Du_lieu.Danh_sach_Soi_cap.find(x => x.soi_id == Soi_cap_Xoa.soi_id)
 
                     var Dieu_kien = { "soi_id": Soi_cap.soi_id }
@@ -522,12 +523,13 @@ var Dich_vu = http.createServer(
                     }).catch(err => {
                         Chuoi_Kq = "Error"
                     })
-
+                })
 
             } 
             else if (Ma_so_Xu_ly == "Xoa_Doan_cap") {
                 var Kq = ""
-                var Doan_cap_Xoa = JSON.parse(Chuoi_Nhan)
+                var Danh_sach_Xoa = JSON.parse(Chuoi_Nhan)
+                Danh_sach_Xoa.forEach(Doan_cap_Xoa => {
                     var Doan_cap = Du_lieu.Danh_sach_Doan_cap.find(x => x.doan_id == Doan_cap_Xoa.doan_id)
 
                     var Dieu_kien = { "doan_id": Doan_cap.doan_id }
@@ -544,7 +546,7 @@ var Dich_vu = http.createServer(
                     }).catch(err => {
                         Chuoi_Kq = "Error"
                     })
-
+                })
 
             } 
             // else if (Ma_so_Xu_ly == "Xoa_Dien_thoai") {
