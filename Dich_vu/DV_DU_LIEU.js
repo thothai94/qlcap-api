@@ -459,33 +459,10 @@ var Dich_vu = http.createServer(
 
             //     })
             // } 
-            // else if (Ma_so_Xu_ly == "Xoa_Tuyen_cap") {
-            //     var Kq = ""
-            //     var Danh_sach_Xoa = JSON.parse(Chuoi_Nhan)
-            //     Danh_sach_Xoa.forEach(Tuyen_cap_Xoa => {
-            //         var Tuyen_cap = Du_lieu.Danh_sach_Tuyen_cap.find(x => x.tuyen_id == Tuyen_cap_Xoa.tuyen_id)
-
-            //         var Dieu_kien = { "tuyen_id": Tuyen_cap.tuyen_id }
-            //         Kq = Luu_tru.Xoa_Doi_tuong("ql_tuyen", Dieu_kien)
-
-            //         Kq.then(result => {
-            //             Du_lieu.Danh_sach_Tuyen_cap = Du_lieu.Danh_sach_Tuyen_cap.filter(x => x.tuyen_id != Tuyen_cap_Xoa.tuyen_id)
-            //             Chuoi_Kq = "OK"
-            //             Dap_ung.setHeader("Access-Control-Allow-Origin", '*')
-            //             Dap_ung.setHeader('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
-            //             Dap_ung.setHeader('Access-Control-Allow-Headers', 'X-Requested-With, content-type');
-            //             Dap_ung.setHeader('Access-Control-Allow-Credentials', true);
-            //             Dap_ung.end(Chuoi_Kq);
-            //         }).catch(err => {
-            //             Chuoi_Kq = "Error"
-            //         })
-
-            //     })
-
-            // } 
             else if (Ma_so_Xu_ly == "Xoa_Tuyen_cap") {
                 var Kq = ""
-                var Tuyen_cap_Xoa = JSON.parse(Chuoi_Nhan)
+                var Danh_sach_Xoa = JSON.parse(Chuoi_Nhan)
+                Danh_sach_Xoa.forEach(Tuyen_cap_Xoa => {
                     var Tuyen_cap = Du_lieu.Danh_sach_Tuyen_cap.find(x => x.tuyen_id == Tuyen_cap_Xoa.tuyen_id)
 
                     var Dieu_kien = { "tuyen_id": Tuyen_cap.tuyen_id }
@@ -502,7 +479,30 @@ var Dich_vu = http.createServer(
                     }).catch(err => {
                         Chuoi_Kq = "Error"
                     })
+
+                })
+
             } 
+            // else if (Ma_so_Xu_ly == "Xoa_Tuyen_cap") {
+            //     var Kq = ""
+            //     var Tuyen_cap_Xoa = JSON.parse(Chuoi_Nhan)
+            //         var Tuyen_cap = Du_lieu.Danh_sach_Tuyen_cap.find(x => x.tuyen_id == Tuyen_cap_Xoa.tuyen_id)
+
+            //         var Dieu_kien = { "tuyen_id": Tuyen_cap.tuyen_id }
+            //         Kq = Luu_tru.Xoa_Doi_tuong("ql_tuyen", Dieu_kien)
+
+            //         Kq.then(result => {
+            //             Du_lieu.Danh_sach_Tuyen_cap = Du_lieu.Danh_sach_Tuyen_cap.filter(x => x.tuyen_id != Tuyen_cap_Xoa.tuyen_id)
+            //             Chuoi_Kq = "OK"
+            //             Dap_ung.setHeader("Access-Control-Allow-Origin", '*')
+            //             Dap_ung.setHeader('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+            //             Dap_ung.setHeader('Access-Control-Allow-Headers', 'X-Requested-With, content-type');
+            //             Dap_ung.setHeader('Access-Control-Allow-Credentials', true);
+            //             Dap_ung.end(Chuoi_Kq);
+            //         }).catch(err => {
+            //             Chuoi_Kq = "Error"
+            //         })
+            // } 
             else if (Ma_so_Xu_ly == "Xoa_Soi_cap") {
                 var Kq = ""
                 var Soi_cap_Xoa = JSON.parse(Chuoi_Nhan)
