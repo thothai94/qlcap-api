@@ -6,7 +6,7 @@ var DbConnection = function () {
     
     async function DbConnect() {
         try {
-            var url=`mongodb://huutoan94:Vnpt@123@ds113636.mlab.com:13636/qlcap`
+            var url=`mongodb://huutoan94:vnpt1234@ds113636.mlab.com:13636/qlcap`
             var _db = await MongoClient.connect(url)
             return _db.db(`qlcap`)
         } catch (Loi) {
