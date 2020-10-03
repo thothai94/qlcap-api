@@ -1,4 +1,5 @@
 var http = require("http");
+var cors = require('cors');
 var Luu_tru = require("../Xu_ly/XL_LUU_TRU_MONGODB")
 var Gmail = require("../Xu_ly/XL_GUI_THU_DIEN_TU")
 var Token = require("../Xu_ly/XL_Get_token")
@@ -342,7 +343,7 @@ var Dich_vu = http.createServer(
 // );
 
 //Them function
-Dich_vu.listen(Port);
+Dich_vu.listen(Port).use(cors());
 Dich_vu.on('error', onError);
 Dich_vu.on('listening', onListening);
 
