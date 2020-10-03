@@ -1,5 +1,4 @@
 var http = require("http");
-var cors = require('cors');
 var Luu_tru = require("../Xu_ly/XL_LUU_TRU_MONGODB")
 var Gmail = require("../Xu_ly/XL_GUI_THU_DIEN_TU")
 var Token = require("../Xu_ly/XL_Get_token")
@@ -87,7 +86,7 @@ var Dich_vu = http.createServer(
                     Chuoi_Kq = JSON.stringify(Tuyen_cap)
                     Dap_ung.setHeader("Access-Control-Allow-Origin", '*')
                     Dap_ung.setHeader('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
-                    Dap_ung.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization, Content-Length, X-Requested-With, Accept');
+                    Dap_ung.setHeader('Access-Control-Allow-Headers', 'X-Requested-With, content-type');
                     Dap_ung.setHeader('Access-Control-Allow-Credentials', true);
                     Dap_ung.end(Chuoi_Kq);
                 })
@@ -343,7 +342,7 @@ var Dich_vu = http.createServer(
 // );
 
 //Them function
-Dich_vu.listen(Port).use(cors());
+Dich_vu.listen(Port);
 Dich_vu.on('error', onError);
 Dich_vu.on('listening', onListening);
 
