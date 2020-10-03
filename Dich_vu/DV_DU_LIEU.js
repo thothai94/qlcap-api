@@ -86,7 +86,7 @@ var Dich_vu = http.createServer(
                     Chuoi_Kq = JSON.stringify(Tuyen_cap)
                     Dap_ung.setHeader("Access-Control-Allow-Origin", '*')
                     Dap_ung.setHeader('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
-                    Dap_ung.setHeader('Access-Control-Allow-Headers', 'X-Requested-With, content-type');
+                    Dap_ung.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization, Content-Length, X-Requested-With, Accept');
                     Dap_ung.setHeader('Access-Control-Allow-Credentials', true);
                     Dap_ung.end(Chuoi_Kq);
                 })
